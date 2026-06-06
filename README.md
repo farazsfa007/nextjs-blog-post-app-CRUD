@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Full-Stack Next.js Blog (CRUD Application)
 
-## Getting Started
+A modern, high-performance, full-stack blog application built with Next.js (App Router), styled using Tailwind CSS v4, and backed by a serverless cloud PostgreSQL database using Neon and Drizzle ORM.
 
-First, run the development server:
+## 🚀 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+* **Framework:** Next.js (App Router)
+* **Styling:** Tailwind CSS v4 (with `@source` compilation)
+* **Database:** Neon (Serverless Postgres)
+* **Database ORM:** Drizzle ORM & Drizzle Kit (neon-http driver)
+* **Language:** TypeScript
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **Full CRUD Functionality:** Create, Read, Update, and Delete blog entries natively.
+* **Next.js Server Actions:** Zero API routing needed; handles all form submissions and DB updates securely on the server.
+* **Dynamic Routing:** Implements dynamic parameter loading handling advanced Next.js routing structures seamlessly.
+* **Drizzle Studio Integration:** Visual database browser accessible straight from your local host machine.
+* **Optimized Architecture:** Uses stateless HTTP queries via `@neondatabase/serverless` to bypass connection limits in serverless functions.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Directory Overview
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+src/
+└── app/
+    ├── globals.css        # Tailwind CSS integration core configuration
+    ├── layout.tsx         # Root application layout shell
+    ├── page.tsx           # Home Feed - Reads and maps post arrays
+    ├── create/
+    │   └── page.tsx       # Write/Publish content using Server Actions
+    ├── post/[id]/
+    │   └── page.tsx       # Dynamic blog detail views (resolves Promise params)
+    ├── edit/[id]/
+    │   └── page.tsx       # Form modification engine populated with existing data
+    └── delete/[id]/
+        └── page.tsx       # Safe records deletion view 
+src/db/
+├── index.ts               # Drizzle database client deployment setup
+└── schema.ts              # PostgreSQL relational tables definition mappings
